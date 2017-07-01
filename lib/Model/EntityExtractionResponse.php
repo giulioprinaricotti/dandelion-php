@@ -5,7 +5,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  DandelionPHP
  * @author   Swaagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -27,7 +27,7 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Model;
+namespace DandelionPHP\Model;
 
 use \ArrayAccess;
 
@@ -35,7 +35,7 @@ use \ArrayAccess;
  * EntityExtractionResponse Class Doc Comment
  *
  * @category    Class
- * @package     Swagger\Client
+ * @package     DandelionPHP
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
@@ -60,7 +60,7 @@ class EntityExtractionResponse implements ArrayAccess
         'lang_confidence' => 'float',
         'text' => 'string',
         'url' => 'string',
-        'annotations' => '\Swagger\Client\Model\EntityExtractionResponseAnnotation[]'
+        'annotations' => '\DandelionPHP\Model\EntityExtractionResponseAnnotation[]'
     ];
 
     public static function swaggerTypes()
@@ -305,7 +305,7 @@ class EntityExtractionResponse implements ArrayAccess
 
     /**
      * Gets annotations
-     * @return \Swagger\Client\Model\EntityExtractionResponseAnnotation[]
+     * @return \DandelionPHP\Model\EntityExtractionResponseAnnotation[]
      */
     public function getAnnotations()
     {
@@ -314,7 +314,7 @@ class EntityExtractionResponse implements ArrayAccess
 
     /**
      * Sets annotations
-     * @param \Swagger\Client\Model\EntityExtractionResponseAnnotation[] $annotations
+     * @param \DandelionPHP\Model\EntityExtractionResponseAnnotation[] $annotations
      * @return $this
      */
     public function setAnnotations($annotations)
@@ -375,10 +375,10 @@ class EntityExtractionResponse implements ArrayAccess
     public function __toString()
     {
         if (defined('JSON_PRETTY_PRINT')) { // use JSON pretty print
-            return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
+            return json_encode(\DandelionPHP\ObjectSerializer::sanitizeForSerialization($this), JSON_PRETTY_PRINT);
         }
 
-        return json_encode(\Swagger\Client\ObjectSerializer::sanitizeForSerialization($this));
+        return json_encode(\DandelionPHP\ObjectSerializer::sanitizeForSerialization($this));
     }
 }
 

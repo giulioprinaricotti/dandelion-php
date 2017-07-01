@@ -1,21 +1,15 @@
 {
     "name": "giulioprinaricotti/dandelion-php",
-    "description": "Unofficial Swagger Generated PHP Client for Dandelion API Edit",
+    "description": "",
     "keywords": [
-        "dandelion",
-        "nlp",
         "swagger",
         "php",
         "sdk",
         "api"
     ],
-    "homepage": "https://github.com/giulioprinaricotti/dandelion-php",
-    "license": "Apache-2.0",
+    "homepage": "http://swagger.io",
+    "license": "proprietary",
     "authors": [
-        {
-            "name": "Giulio Prina Ricotti",
-            "homepage": "https://github.com/giulioprinaricotti"
-        },
         {
             "name": "Swagger and contributors",
             "homepage": "https://github.com/swagger-api/swagger-codegen"
@@ -34,9 +28,9 @@
         "friendsofphp/php-cs-fixer": "~1.12"
     },
     "autoload": {
-        "psr-4": { "Swagger\\Client\\" : "lib/" }
+        "psr-4": { "DandelionPHP\\" : "lib/" }
     },
     "autoload-dev": {
-        "psr-4": { "Swagger\\Client\\" : "test/" }
+        "psr-4": { "DandelionPHP\\" : "test/" }
     }
 }

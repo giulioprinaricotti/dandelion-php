@@ -4,7 +4,7 @@
  * PHP version 5
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  DandelionPHP
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -26,18 +26,18 @@
  * Do not edit the class manually.
  */
 
-namespace Swagger\Client\Api;
+namespace DandelionPHP\Api;
 
-use \Swagger\Client\ApiClient;
-use \Swagger\Client\ApiException;
-use \Swagger\Client\Configuration;
-use \Swagger\Client\ObjectSerializer;
+use \DandelionPHP\ApiClient;
+use \DandelionPHP\ApiException;
+use \DandelionPHP\Configuration;
+use \DandelionPHP\ObjectSerializer;
 
 /**
  * DefaultApi Class Doc Comment
  *
  * @category Class
- * @package  Swagger\Client
+ * @package  DandelionPHP
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
@@ -46,16 +46,16 @@ class DefaultApi
     /**
      * API Client
      *
-     * @var \Swagger\Client\ApiClient instance of the ApiClient
+     * @var \DandelionPHP\ApiClient instance of the ApiClient
      */
     protected $apiClient;
 
     /**
      * Constructor
      *
-     * @param \Swagger\Client\ApiClient|null $apiClient The api client to use
+     * @param \DandelionPHP\ApiClient|null $apiClient The api client to use
      */
-    public function __construct(\Swagger\Client\ApiClient $apiClient = null)
+    public function __construct(\DandelionPHP\ApiClient $apiClient = null)
     {
         if ($apiClient === null) {
             $apiClient = new ApiClient();
@@ -67,7 +67,7 @@ class DefaultApi
     /**
      * Get API client
      *
-     * @return \Swagger\Client\ApiClient get the API client
+     * @return \DandelionPHP\ApiClient get the API client
      */
     public function getApiClient()
     {
@@ -77,11 +77,11 @@ class DefaultApi
     /**
      * Set the API client
      *
-     * @param \Swagger\Client\ApiClient $apiClient set the API client
+     * @param \DandelionPHP\ApiClient $apiClient set the API client
      *
      * @return DefaultApi
      */
-    public function setApiClient(\Swagger\Client\ApiClient $apiClient)
+    public function setApiClient(\DandelionPHP\ApiClient $apiClient)
     {
         $this->apiClient = $apiClient;
         return $this;
@@ -98,8 +98,8 @@ class DefaultApi
      * @param string $html_fragment use \&quot;html_fragment\&quot; when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it. (optional)
      * @param string $lang The language of the text to be annotated; currently English, French, German, Italian and Portuguese are supported. Leave this parameter out to let the Entity Extraction API automatically detect the language for you. (optional)
      * @param string $country This parameter specifies the country which we assume VAT and telephone numbers to be coming from. This is important to get correct results, as different countries may adopt different formats. (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\EntityExtractionResponse
+     * @throws \DandelionPHP\ApiException on non-2xx response
+     * @return \DandelionPHP\Model\EntityExtractionResponse
      */
     public function getEntities($text = null, $url = null, $html = null, $html_fragment = null, $lang = null, $country = null)
     {
@@ -118,8 +118,8 @@ class DefaultApi
      * @param string $html_fragment use \&quot;html_fragment\&quot; when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it. (optional)
      * @param string $lang The language of the text to be annotated; currently English, French, German, Italian and Portuguese are supported. Leave this parameter out to let the Entity Extraction API automatically detect the language for you. (optional)
      * @param string $country This parameter specifies the country which we assume VAT and telephone numbers to be coming from. This is important to get correct results, as different countries may adopt different formats. (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\EntityExtractionResponse, HTTP status code, HTTP response headers (array of strings)
+     * @throws \DandelionPHP\ApiException on non-2xx response
+     * @return array of \DandelionPHP\Model\EntityExtractionResponse, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEntitiesWithHttpInfo($text = null, $url = null, $html = null, $html_fragment = null, $lang = null, $country = null)
     {
@@ -182,15 +182,15 @@ class DefaultApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\EntityExtractionResponse',
+                '\DandelionPHP\Model\EntityExtractionResponse',
                 '/nex/v1'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\EntityExtractionResponse', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\DandelionPHP\Model\EntityExtractionResponse', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\EntityExtractionResponse', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\DandelionPHP\Model\EntityExtractionResponse', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -209,7 +209,7 @@ class DefaultApi
      * @param string $html use \&quot;html\&quot; when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the \&quot;url\&quot; parameter does. (optional)
      * @param string $html_fragment use \&quot;html_fragment\&quot; when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it. (optional)
      * @param string $lang The language of the text to be annotated; currently only English and Italian are supported. (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \DandelionPHP\ApiException on non-2xx response
      * @return void
      */
     public function getSentiment($text = null, $url = null, $html = null, $html_fragment = null, $lang = null)
@@ -228,7 +228,7 @@ class DefaultApi
      * @param string $html use \&quot;html\&quot; when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the \&quot;url\&quot; parameter does. (optional)
      * @param string $html_fragment use \&quot;html_fragment\&quot; when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it. (optional)
      * @param string $lang The language of the text to be annotated; currently only English and Italian are supported. (optional)
-     * @throws \Swagger\Client\ApiException on non-2xx response
+     * @throws \DandelionPHP\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
     public function getSentimentWithHttpInfo($text = null, $url = null, $html = null, $html_fragment = null, $lang = null)

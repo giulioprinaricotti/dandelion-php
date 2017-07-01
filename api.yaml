@@ -57,8 +57,8 @@ paths:
           description: Unauthorized. Missing token
         200:
           description: Response information and list of annotations found in the given text
-          #schema:
-          #  $ref: '#/definitions/EntityExtractionResponse'
+          schema:
+            $ref: '#/definitions/EntityExtractionResponse'
       security:
         - api_key: []
   /sent/v1:

@@ -1,4 +1,4 @@
-# Swagger\Client\DefaultApi
+# DandelionPHP\DefaultApi
 
 All URIs are relative to *https://api.dandelion.eu/datatxt*
 
@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 
 # **getEntities**
-> \Swagger\Client\Model\EntityExtractionResponse getEntities($text, $url, $html, $html_fragment, $lang, $country)
+> \DandelionPHP\Model\EntityExtractionResponse getEntities($text, $url, $html, $html_fragment, $lang, $country)
 
 Entity Extraction
 
@@ -21,11 +21,11 @@ This is a named entity extraction & linking API that performs very well even on 
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+DandelionPHP\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+// DandelionPHP\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\DefaultApi();
+$api_instance = new DandelionPHP\Api\DefaultApi();
 $text = "text_example"; // string | use \"text\" when you have plain text that doesn't need any pre-processing
 $url = "url_example"; // string | use \"url\" when you have an URL and you want the Entity Extraction API to work on its main content; it will fetch the URL for you, and use an AI algorithm to extract the relevant part of the document to work on; in this case, the main content will also be returned by the API to allow you to properly use the annotation offsets
 $html = "html_example"; // string | use \"html\" when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the \"url\" parameter does.
@@ -55,7 +55,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\Swagger\Client\Model\EntityExtractionResponse**](../Model/EntityExtractionResponse.md)
+[**\DandelionPHP\Model\EntityExtractionResponse**](../Model/EntityExtractionResponse.md)
 
 ### Authorization
 
@@ -81,11 +81,11 @@ Name | Type | Description  | Notes
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: api_key
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
+DandelionPHP\Configuration::getDefaultConfiguration()->setApiKey('token', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
+// DandelionPHP\Configuration::getDefaultConfiguration()->setApiKeyPrefix('token', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\DefaultApi();
+$api_instance = new DandelionPHP\Api\DefaultApi();
 $text = "text_example"; // string | use \"text\" when you have plain text that doesn't need any pre-processing
 $url = "url_example"; // string | use \"url\" when you have an URL and you want the Entity Extraction API to work on its main content; it will fetch the URL for you, and use an AI algorithm to extract the relevant part of the document to work on; in this case, the main content will also be returned by the API to allow you to properly use the annotation offsets;
 $html = "html_example"; // string | use \"html\" when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the \"url\" parameter does.
