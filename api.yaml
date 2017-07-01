@@ -1,0 +1,194 @@
+swagger: '2.0'
+info:
+  description: Unofficial Dandelion Swagger API definition
+  version: 0.0.1
+  title: Dandelion Swagger API
+  termsOfService: ''
+  contact:
+    name: Giulio Prina Ricotti
+    email: g.prinaricotti@gmail.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: api.dandelion.eu
+basePath: /datatxt
+tags: []
+schemes:
+  - https
+paths:
+  /nex/v1:
+    get:
+      summary: 'Entity Extraction'
+      description: 'This is a named entity extraction & linking API that performs very well even on short texts, on which many other similar services do not. It currently works on texts in English, French, German, Italian, Portuguese, Russian, Spanish and many other languages. With this API you will be able to automatically tag your texts, extracting Wikipedia entities and enriching your data.'
+      operationId: getEntities
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: text
+          description: use "text" when you have plain text that doesn't need any pre-processing
+          type: string
+          in: query
+          required: false
+        - name: url
+          description: use "url" when you have an URL and you want the Entity Extraction API to work on its main content; it will fetch the URL for you, and use an AI algorithm to extract the relevant part of the document to work on; in this case, the main content will also be returned by the API to allow you to properly use the annotation offsets
+          type: string
+          in: query
+          required: false
+        - name: html
+          description: use "html" when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the "url" parameter does.
+          type: string
+          in: query
+        - name: html_fragment
+          description: use "html_fragment" when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it.
+          type: string
+          in: query
+        - name: lang
+          description: The language of the text to be annotated; currently English, French, German, Italian and Portuguese are supported. Leave this parameter out to let the Entity Extraction API automatically detect the language for you.
+          type: string
+          in: query
+        - name: country
+          description: This parameter specifies the country which we assume VAT and telephone numbers to be coming from. This is important to get correct results, as different countries may adopt different formats.
+          type: string
+          in: query
+      responses:
+        400:
+          description: Unauthorized. Missing token
+        200:
+          description: Response information and list of annotations found in the given text
+          #schema:
+          #  $ref: '#/definitions/EntityExtractionResponse'
+      security:
+        - api_key: []
+  /sent/v1:
+    get:
+      summary: ''
+      description: ''
+      operationId: getSentiment
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: text
+          description: use "text" when you have plain text that doesn't need any pre-processing
+          type: string
+          in: query
+        - name: url
+          description: 'use "url" when you have an URL and you want the Entity Extraction API to work on its main content; it will fetch the URL for you, and use an AI algorithm to extract the relevant part of the document to work on; in this case, the main content will also be returned by the API to allow you to properly use the annotation offsets;'
+          type: string
+          in: query
+        - name: html
+          description: 'use "html" when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the "url" parameter does.'
+          type: string
+          in: query
+        - name: html_fragment
+          description: use "html_fragment" when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it.
+          type: string
+          in: query
+        - name: lang
+          description: The language of the text to be annotated; currently only English and Italian are supported.
+          type: string
+          in: query
+      responses:
+        '400':
+          description: Unauthorized. Missing token
+      security:
+        - api_key: []
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: token
+    in: query
+definitions:
+  ApiResponseError:
+    type: object
+    properties:
+      message:
+        type: string
+      code:
+        type: string
+      data:
+        type: object
+  EntityExtractionResponse:
+    type: object
+    properties:
+      timestamp: 
+        description: Date and time of the response generation process
+        type: string
+        format: date-time
+        example: "2015-10-21T16:29:37"
+      time: 
+        description: Time elapsed for generating the response (milliseconds)
+        type: integer
+      lang: 
+        description: The language used to tag the input text
+        type: string
+      langConfidence: 
+        description: Accuracy of the language detection, from 0.0 to 1.0. Present only if auto-detection is on
+        type: number
+      text:
+        description: The annotated text. Present only if the 'url' or 'html' parameters have been used
+        type: string
+      url: 
+        description: The actual URL from which the text has been extracted. Present only if the 'url' parameter has been used
+        type: string
+      annotations:
+        type: array
+        items: 
+          $ref: '#/definitions/EntityExtractionResponseAnnotation'
+  EntityExtractionResponseAnnotation:
+    type: object
+    properties:
+      id: 
+        description: ID of the linked Wikipedia resource
+        type: integer
+      title: 
+        description: Title of the linked Wikipedia resource
+        type: string
+      uri: 
+        description: URL of the entity on Wikipedia
+        type: string
+      label: 
+        description: Most common name used to represent the resource
+        type: string
+      confidence: 
+        description: Value of confidence for this annotation
+        type: number
+      spot: 
+        description: Annotated string, as it is in the input text
+        type: string
+      start: 
+        description: Character position in the input text where the annotation begins
+        type: integer
+      end: 
+        description: Character position in the input text where the annotation ends
+        type: integer
+      types:
+        description: List of types of the linked DBpedia resource. Only if "include" parameter contains "types"
+        type: array
+        items:
+          type: string
+      categories:
+        description: List of the category of the linked DBpedia resource", Only if 'include' parameter contains 'categories'
+        type: array
+        items:
+          type: string
+      abstract: 
+        description: Abstract of the linked Wikipedia resource. Only if 'include' parameter contains ­'abstract'
+        type: string
+      #lod:
+      #      wikipedia: URL of the Wikipedia article that represents the resource
+      #      dbpedia: URI of the resource on DBpedia
+      #alternateLabels:
+      #      - List of other names used when referring to the entity
+      #      - Only if 'include' parameter contains 'alternate_labels'
+      #image:
+      #      full: URL of a depiction of the resource on Wikipedia. Only if 'include' parameter contains 'image'
+      #      thumbnail: URL of the thumbnail of the depiction. Only if 'include' parameter contains 'image'
+      #topEntities:
+      #  - id: ID of the linked Wikipedia resource
+      #    uri: URL of the entity on Wikipedia
+      #    score: The result of the ranking algorithm
+      
