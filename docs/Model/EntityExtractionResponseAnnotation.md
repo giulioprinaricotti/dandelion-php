@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **types** | **string[]** | List of types of the linked DBpedia resource. Only if \&quot;include\&quot; parameter contains \&quot;types\&quot; | [optional] 
 **categories** | **string[]** | List of the category of the linked DBpedia resource\&quot;, Only if &#39;include&#39; parameter contains &#39;categories&#39; | [optional] 
 **abstract** | **string** | Abstract of the linked Wikipedia resource. Only if &#39;include&#39; parameter contains ­&#39;abstract&#39; | [optional] 
+**lod** | [**\DandelionPHP\Model\EntityExtractionResponseAnnotationLod**](EntityExtractionResponseAnnotationLod.md) |  | [optional] 
+**alternate_labels** | **string[]** | List of other names used when referring to the entity. Only if &#39;include&#39; parameter contains &#39;alternate_labels&#39; | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

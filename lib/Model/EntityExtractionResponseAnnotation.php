@@ -64,7 +64,9 @@ class EntityExtractionResponseAnnotation implements ArrayAccess
         'end' => 'int',
         'types' => 'string[]',
         'categories' => 'string[]',
-        'abstract' => 'string'
+        'abstract' => 'string',
+        'lod' => '\DandelionPHP\Model\EntityExtractionResponseAnnotationLod',
+        'alternate_labels' => 'string[]'
     ];
 
     public static function swaggerTypes()
@@ -87,7 +89,9 @@ class EntityExtractionResponseAnnotation implements ArrayAccess
         'end' => 'end',
         'types' => 'types',
         'categories' => 'categories',
-        'abstract' => 'abstract'
+        'abstract' => 'abstract',
+        'lod' => 'lod',
+        'alternate_labels' => 'alternateLabels'
     ];
 
 
@@ -106,7 +110,9 @@ class EntityExtractionResponseAnnotation implements ArrayAccess
         'end' => 'setEnd',
         'types' => 'setTypes',
         'categories' => 'setCategories',
-        'abstract' => 'setAbstract'
+        'abstract' => 'setAbstract',
+        'lod' => 'setLod',
+        'alternate_labels' => 'setAlternateLabels'
     ];
 
 
@@ -125,7 +131,9 @@ class EntityExtractionResponseAnnotation implements ArrayAccess
         'end' => 'getEnd',
         'types' => 'getTypes',
         'categories' => 'getCategories',
-        'abstract' => 'getAbstract'
+        'abstract' => 'getAbstract',
+        'lod' => 'getLod',
+        'alternate_labels' => 'getAlternateLabels'
     ];
 
     public static function attributeMap()
@@ -170,6 +178,8 @@ class EntityExtractionResponseAnnotation implements ArrayAccess
         $this->container['types'] = isset($data['types']) ? $data['types'] : null;
         $this->container['categories'] = isset($data['categories']) ? $data['categories'] : null;
         $this->container['abstract'] = isset($data['abstract']) ? $data['abstract'] : null;
+        $this->container['lod'] = isset($data['lod']) ? $data['lod'] : null;
+        $this->container['alternate_labels'] = isset($data['alternate_labels']) ? $data['alternate_labels'] : null;
     }
 
     /**
@@ -424,6 +434,48 @@ class EntityExtractionResponseAnnotation implements ArrayAccess
     public function setAbstract($abstract)
     {
         $this->container['abstract'] = $abstract;
+
+        return $this;
+    }
+
+    /**
+     * Gets lod
+     * @return \DandelionPHP\Model\EntityExtractionResponseAnnotationLod
+     */
+    public function getLod()
+    {
+        return $this->container['lod'];
+    }
+
+    /**
+     * Sets lod
+     * @param \DandelionPHP\Model\EntityExtractionResponseAnnotationLod $lod
+     * @return $this
+     */
+    public function setLod($lod)
+    {
+        $this->container['lod'] = $lod;
+
+        return $this;
+    }
+
+    /**
+     * Gets alternate_labels
+     * @return string[]
+     */
+    public function getAlternateLabels()
+    {
+        return $this->container['alternate_labels'];
+    }
+
+    /**
+     * Sets alternate_labels
+     * @param string[] $alternate_labels List of other names used when referring to the entity. Only if 'include' parameter contains 'alternate_labels'
+     * @return $this
+     */
+    public function setAlternateLabels($alternate_labels)
+    {
+        $this->container['alternate_labels'] = $alternate_labels;
 
         return $this;
     }

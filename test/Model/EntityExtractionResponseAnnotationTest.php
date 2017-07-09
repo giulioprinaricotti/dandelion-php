@@ -170,4 +170,20 @@ class EntityExtractionResponseAnnotationTest extends \PHPUnit_Framework_TestCase
 
     }
 
+    /**
+     * Test attribute "lod"
+     */
+    public function testPropertyLod()
+    {
+
+    }
+
+    /**
+     * Test attribute "alternate_labels"
+     */
+    public function testPropertyAlternateLabels()
+    {
+
+    }
+
 }

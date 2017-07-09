@@ -88,40 +88,38 @@ class DefaultApi
     }
 
     /**
-     * Operation getEntities
+     * Operation getEntitiesFromText
      *
      * Entity Extraction
      *
      * @param string $text use \&quot;text\&quot; when you have plain text that doesn&#39;t need any pre-processing (optional)
-     * @param string $url use \&quot;url\&quot; when you have an URL and you want the Entity Extraction API to work on its main content; it will fetch the URL for you, and use an AI algorithm to extract the relevant part of the document to work on; in this case, the main content will also be returned by the API to allow you to properly use the annotation offsets (optional)
-     * @param string $html use \&quot;html\&quot; when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the \&quot;url\&quot; parameter does. (optional)
-     * @param string $html_fragment use \&quot;html_fragment\&quot; when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it. (optional)
+     * @param string $include Returns more information on annotated entities: \&quot;types\&quot; adds type information from DBpedia or dandelion. DBpedia types are extracted based on the lang parameter (e.g. if lang&#x3D;en, types are extracted from DBpedia english). Please notice that different DBpedia instances may contain different types for the same resource; \&quot;categories\&quot; adds category information from DBpedia/Wikipedia; \&quot;abstract\&quot; adds the text of the Wikipedia abstract; \&quot;image\&quot; adds a link to an image depicting the tagged entity, as well as a link to the image thumbnail, served by Wikipedia. Please check the licensing terms of each image on Wikipedia before using it in your app; \&quot;lod\&quot; adds links to equivalent (sameAs) entities in Linked Open Data repositories or other websites. It currently only supports DBpedia and Wikipedia; \&quot;alternate_labels\&quot; adds some other names used when referring to the entity. (optional)
      * @param string $lang The language of the text to be annotated; currently English, French, German, Italian and Portuguese are supported. Leave this parameter out to let the Entity Extraction API automatically detect the language for you. (optional)
      * @param string $country This parameter specifies the country which we assume VAT and telephone numbers to be coming from. This is important to get correct results, as different countries may adopt different formats. (optional)
+     * @param int $top_entities The number of most important entities that must be included in the response. (optional)
      * @throws \DandelionPHP\ApiException on non-2xx response
      * @return \DandelionPHP\Model\EntityExtractionResponse
      */
-    public function getEntities($text = null, $url = null, $html = null, $html_fragment = null, $lang = null, $country = null)
+    public function getEntitiesFromText($text = null, $include = null, $lang = null, $country = null, $top_entities = null)
     {
-        list($response) = $this->getEntitiesWithHttpInfo($text, $url, $html, $html_fragment, $lang, $country);
+        list($response) = $this->getEntitiesFromTextWithHttpInfo($text, $include, $lang, $country, $top_entities);
         return $response;
     }
 
     /**
-     * Operation getEntitiesWithHttpInfo
+     * Operation getEntitiesFromTextWithHttpInfo
      *
      * Entity Extraction
      *
      * @param string $text use \&quot;text\&quot; when you have plain text that doesn&#39;t need any pre-processing (optional)
-     * @param string $url use \&quot;url\&quot; when you have an URL and you want the Entity Extraction API to work on its main content; it will fetch the URL for you, and use an AI algorithm to extract the relevant part of the document to work on; in this case, the main content will also be returned by the API to allow you to properly use the annotation offsets (optional)
-     * @param string $html use \&quot;html\&quot; when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the \&quot;url\&quot; parameter does. (optional)
-     * @param string $html_fragment use \&quot;html_fragment\&quot; when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it. (optional)
+     * @param string $include Returns more information on annotated entities: \&quot;types\&quot; adds type information from DBpedia or dandelion. DBpedia types are extracted based on the lang parameter (e.g. if lang&#x3D;en, types are extracted from DBpedia english). Please notice that different DBpedia instances may contain different types for the same resource; \&quot;categories\&quot; adds category information from DBpedia/Wikipedia; \&quot;abstract\&quot; adds the text of the Wikipedia abstract; \&quot;image\&quot; adds a link to an image depicting the tagged entity, as well as a link to the image thumbnail, served by Wikipedia. Please check the licensing terms of each image on Wikipedia before using it in your app; \&quot;lod\&quot; adds links to equivalent (sameAs) entities in Linked Open Data repositories or other websites. It currently only supports DBpedia and Wikipedia; \&quot;alternate_labels\&quot; adds some other names used when referring to the entity. (optional)
      * @param string $lang The language of the text to be annotated; currently English, French, German, Italian and Portuguese are supported. Leave this parameter out to let the Entity Extraction API automatically detect the language for you. (optional)
      * @param string $country This parameter specifies the country which we assume VAT and telephone numbers to be coming from. This is important to get correct results, as different countries may adopt different formats. (optional)
+     * @param int $top_entities The number of most important entities that must be included in the response. (optional)
      * @throws \DandelionPHP\ApiException on non-2xx response
      * @return array of \DandelionPHP\Model\EntityExtractionResponse, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getEntitiesWithHttpInfo($text = null, $url = null, $html = null, $html_fragment = null, $lang = null, $country = null)
+    public function getEntitiesFromTextWithHttpInfo($text = null, $include = null, $lang = null, $country = null, $top_entities = null)
     {
         // parse inputs
         $resourcePath = "/nex/v1";
@@ -140,16 +138,8 @@ class DefaultApi
             $queryParams['text'] = $this->apiClient->getSerializer()->toQueryValue($text);
         }
         // query params
-        if ($url !== null) {
-            $queryParams['url'] = $this->apiClient->getSerializer()->toQueryValue($url);
-        }
-        // query params
-        if ($html !== null) {
-            $queryParams['html'] = $this->apiClient->getSerializer()->toQueryValue($html);
-        }
-        // query params
-        if ($html_fragment !== null) {
-            $queryParams['html_fragment'] = $this->apiClient->getSerializer()->toQueryValue($html_fragment);
+        if ($include !== null) {
+            $queryParams['include'] = $this->apiClient->getSerializer()->toQueryValue($include);
         }
         // query params
         if ($lang !== null) {
@@ -158,6 +148,10 @@ class DefaultApi
         // query params
         if ($country !== null) {
             $queryParams['country'] = $this->apiClient->getSerializer()->toQueryValue($country);
+        }
+        // query params
+        if ($top_entities !== null) {
+            $queryParams['top_entities'] = $this->apiClient->getSerializer()->toQueryValue($top_entities);
         }
         // default format to json
         $resourcePath = str_replace("{format}", "json", $resourcePath);

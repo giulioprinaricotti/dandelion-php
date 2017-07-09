@@ -20,7 +20,7 @@ paths:
     get:
       summary: 'Entity Extraction'
       description: 'This is a named entity extraction & linking API that performs very well even on short texts, on which many other similar services do not. It currently works on texts in English, French, German, Italian, Portuguese, Russian, Spanish and many other languages. With this API you will be able to automatically tag your texts, extracting Wikipedia entities and enriching your data.'
-      operationId: getEntities
+      operationId: getEntitiesFromText
       consumes:
         - application/json
       produces:
@@ -31,17 +31,8 @@ paths:
           type: string
           in: query
           required: false
-        - name: url
-          description: use "url" when you have an URL and you want the Entity Extraction API to work on its main content; it will fetch the URL for you, and use an AI algorithm to extract the relevant part of the document to work on; in this case, the main content will also be returned by the API to allow you to properly use the annotation offsets
-          type: string
-          in: query
-          required: false
-        - name: html
-          description: use "html" when you have an HTML document and you want the Entity Extraction API to work on its main content, similarly to what the "url" parameter does.
-          type: string
-          in: query
-        - name: html_fragment
-          description: use "html_fragment" when you have an HTML snippet and you want the Entity Extraction API to work on its content. It will remove all HTML tags before analyzing it.
+        - name: include
+          description: 'Returns more information on annotated entities: "types" adds type information from DBpedia or dandelion. DBpedia types are extracted based on the lang parameter (e.g. if lang=en, types are extracted from DBpedia english). Please notice that different DBpedia instances may contain different types for the same resource; "categories" adds category information from DBpedia/Wikipedia; "abstract" adds the text of the Wikipedia abstract; "image" adds a link to an image depicting the tagged entity, as well as a link to the image thumbnail, served by Wikipedia. Please check the licensing terms of each image on Wikipedia before using it in your app; "lod" adds links to equivalent (sameAs) entities in Linked Open Data repositories or other websites. It currently only supports DBpedia and Wikipedia; "alternate_labels" adds some other names used when referring to the entity.'
           type: string
           in: query
         - name: lang
@@ -51,6 +42,10 @@ paths:
         - name: country
           description: This parameter specifies the country which we assume VAT and telephone numbers to be coming from. This is important to get correct results, as different countries may adopt different formats.
           type: string
+          in: query
+        - name: top_entities
+          description: The number of most important entities that must be included in the response.
+          type: integer
           in: query
       responses:
         400:
@@ -178,12 +173,20 @@ definitions:
       abstract: 
         description: Abstract of the linked Wikipedia resource. Only if 'include' parameter contains ­'abstract'
         type: string
-      #lod:
-      #      wikipedia: URL of the Wikipedia article that represents the resource
-      #      dbpedia: URI of the resource on DBpedia
-      #alternateLabels:
-      #      - List of other names used when referring to the entity
-      #      - Only if 'include' parameter contains 'alternate_labels'
+      lod:
+          type: object
+          properties:
+            wikipedia: 
+              description: URL of the Wikipedia article that represents the resource
+              type: string
+            dbpedia: 
+              description: URI of the resource on DBpedia
+              type: string
+      alternateLabels:
+          description: "List of other names used when referring to the entity. Only if 'include' parameter contains 'alternate_labels'"
+          type: array
+          items:
+              type: string
       #image:
       #      full: URL of a depiction of the resource on Wikipedia. Only if 'include' parameter contains 'image'
       #      thumbnail: URL of the thumbnail of the depiction. Only if 'include' parameter contains 'image'
