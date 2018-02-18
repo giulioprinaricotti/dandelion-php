@@ -1,6 +1,6 @@
 <?php
 /**
- * EntityExtractionResponseTest
+ * EntityExtractionResponseTopEntityTest
  *
  * PHP version 5
  *
@@ -30,16 +30,16 @@
 namespace DandelionPHP;
 
 /**
- * EntityExtractionResponseTest Class Doc Comment
+ * EntityExtractionResponseTopEntityTest Class Doc Comment
  *
  * @category    Class */
-// * @description EntityExtractionResponse
+// * @description EntityExtractionResponseTopEntity
 /**
  * @package     DandelionPHP
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class EntityExtractionResponseTest extends \PHPUnit_Framework_TestCase
+class EntityExtractionResponseTopEntityTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -75,73 +75,33 @@ class EntityExtractionResponseTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "EntityExtractionResponse"
+     * Test "EntityExtractionResponseTopEntity"
      */
-    public function testEntityExtractionResponse()
+    public function testEntityExtractionResponseTopEntity()
     {
 
     }
 
     /**
-     * Test attribute "timestamp"
+     * Test attribute "id"
      */
-    public function testPropertyTimestamp()
+    public function testPropertyId()
     {
 
     }
 
     /**
-     * Test attribute "time"
+     * Test attribute "uri"
      */
-    public function testPropertyTime()
+    public function testPropertyUri()
     {
 
     }
 
     /**
-     * Test attribute "lang"
+     * Test attribute "score"
      */
-    public function testPropertyLang()
-    {
-
-    }
-
-    /**
-     * Test attribute "lang_confidence"
-     */
-    public function testPropertyLangConfidence()
-    {
-
-    }
-
-    /**
-     * Test attribute "text"
-     */
-    public function testPropertyText()
-    {
-
-    }
-
-    /**
-     * Test attribute "url"
-     */
-    public function testPropertyUrl()
-    {
-
-    }
-
-    /**
-     * Test attribute "annotations"
-     */
-    public function testPropertyAnnotations()
-    {
-
-    }
-
-    /**
-     * Test attribute "top_entities"
-     */
-    public function testPropertyTopEntities()
+    public function testPropertyScore()
     {
 
     }

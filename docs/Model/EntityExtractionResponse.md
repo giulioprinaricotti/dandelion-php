@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **text** | **string** | The annotated text. Present only if the &#39;url&#39; or &#39;html&#39; parameters have been used | [optional] 
 **url** | **string** | The actual URL from which the text has been extracted. Present only if the &#39;url&#39; parameter has been used | [optional] 
 **annotations** | [**\DandelionPHP\Model\EntityExtractionResponseAnnotation[]**](EntityExtractionResponseAnnotation.md) |  | [optional] 
+**top_entities** | [**\DandelionPHP\Model\EntityExtractionResponseTopEntity[]**](EntityExtractionResponseTopEntity.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

@@ -94,6 +94,7 @@ Class | Method | HTTP request | Description
  - [EntityExtractionResponse](docs/Model/EntityExtractionResponse.md)
  - [EntityExtractionResponseAnnotation](docs/Model/EntityExtractionResponseAnnotation.md)
  - [EntityExtractionResponseAnnotationLod](docs/Model/EntityExtractionResponseAnnotationLod.md)
+ - [EntityExtractionResponseTopEntity](docs/Model/EntityExtractionResponseTopEntity.md)
 
 
 ## Documentation For Authorization

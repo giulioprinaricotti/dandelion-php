@@ -60,7 +60,8 @@ class EntityExtractionResponse implements ArrayAccess
         'lang_confidence' => 'float',
         'text' => 'string',
         'url' => 'string',
-        'annotations' => '\DandelionPHP\Model\EntityExtractionResponseAnnotation[]'
+        'annotations' => '\DandelionPHP\Model\EntityExtractionResponseAnnotation[]',
+        'top_entities' => '\DandelionPHP\Model\EntityExtractionResponseTopEntity[]'
     ];
 
     public static function swaggerTypes()
@@ -79,7 +80,8 @@ class EntityExtractionResponse implements ArrayAccess
         'lang_confidence' => 'langConfidence',
         'text' => 'text',
         'url' => 'url',
-        'annotations' => 'annotations'
+        'annotations' => 'annotations',
+        'top_entities' => 'topEntities'
     ];
 
 
@@ -94,7 +96,8 @@ class EntityExtractionResponse implements ArrayAccess
         'lang_confidence' => 'setLangConfidence',
         'text' => 'setText',
         'url' => 'setUrl',
-        'annotations' => 'setAnnotations'
+        'annotations' => 'setAnnotations',
+        'top_entities' => 'setTopEntities'
     ];
 
 
@@ -109,7 +112,8 @@ class EntityExtractionResponse implements ArrayAccess
         'lang_confidence' => 'getLangConfidence',
         'text' => 'getText',
         'url' => 'getUrl',
-        'annotations' => 'getAnnotations'
+        'annotations' => 'getAnnotations',
+        'top_entities' => 'getTopEntities'
     ];
 
     public static function attributeMap()
@@ -150,6 +154,7 @@ class EntityExtractionResponse implements ArrayAccess
         $this->container['text'] = isset($data['text']) ? $data['text'] : null;
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
         $this->container['annotations'] = isset($data['annotations']) ? $data['annotations'] : null;
+        $this->container['top_entities'] = isset($data['top_entities']) ? $data['top_entities'] : null;
     }
 
     /**
@@ -320,6 +325,27 @@ class EntityExtractionResponse implements ArrayAccess
     public function setAnnotations($annotations)
     {
         $this->container['annotations'] = $annotations;
+
+        return $this;
+    }
+
+    /**
+     * Gets top_entities
+     * @return \DandelionPHP\Model\EntityExtractionResponseTopEntity[]
+     */
+    public function getTopEntities()
+    {
+        return $this->container['top_entities'];
+    }
+
+    /**
+     * Sets top_entities
+     * @param \DandelionPHP\Model\EntityExtractionResponseTopEntity[] $top_entities
+     * @return $this
+     */
+    public function setTopEntities($top_entities)
+    {
+        $this->container['top_entities'] = $top_entities;
 
         return $this;
     }

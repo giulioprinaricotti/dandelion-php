@@ -133,6 +133,22 @@ definitions:
         type: array
         items: 
           $ref: '#/definitions/EntityExtractionResponseAnnotation'
+      topEntities:
+        type: array
+        items: 
+          $ref: '#/definitions/EntityExtractionResponseTopEntity'
+  EntityExtractionResponseTopEntity:
+    type: object
+    properties:
+      id: 
+        description: ID of the linked Wikipedia resource
+        type: integer 
+      uri: 
+        description: URL of the entity on Wikipedia
+        type: string
+      score:
+        description: The result of the ranking algorithm
+        type: number
   EntityExtractionResponseAnnotation:
     type: object
     properties:
